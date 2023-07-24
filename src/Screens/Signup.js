@@ -8,6 +8,7 @@ import userIcon from '../Images/user.png';
 import mobileIcon from '../Images/cell-phone.png';
 import CustomButton from '../common/CustomButton';
 import {useNavigation} from '@react-navigation/native';
+import AsyncStorage from '@react-native-async-storage/async-storage';
 
 const Signup = () => {
   const navigation = useNavigation();
@@ -57,8 +58,11 @@ const Signup = () => {
     return isValid;
   };
 
-  const FormSubmit = () => {
+  const FormSubmit = async () => {
     if (validateForm()) {
+      await AsyncStorage.setItem('signUpUsers', JSON.stringify(signupFormData));
+      //   navigation.goBack();
+      navigation.navigate('Login');
     } else {
     }
   };
