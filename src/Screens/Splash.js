@@ -1,17 +1,18 @@
 import {View, Text, Image} from 'react-native';
 import {React, useEffect} from 'react';
 import LogoImg from '../Images/ic_launcher_round.png';
-import {useNavigation} from '@react-navigation/native';
+import {useIsFocused, useNavigation} from '@react-navigation/native';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 
 const Splash = () => {
   const navigation = useNavigation();
+  const isFocused = useIsFocused();
 
   useEffect(() => {
     setTimeout(() => {
       getSignUpDataFromStorage();
-    }, 3000);
-  }, []);
+    }, 2000);
+  }, [isFocused]);
 
   const getSignUpDataFromStorage = async () => {
     try {

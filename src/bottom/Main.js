@@ -28,7 +28,6 @@ const Main = () => {
   };
   const getAllCategories = async () => {
     await axios.get('https://dummyjson.com/products/categories').then(res => {
-      console.log('ressss', res);
       setCategory(res?.data);
     });
   };
