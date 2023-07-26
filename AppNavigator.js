@@ -4,6 +4,8 @@ import Login from './src/Screens/Login';
 import Splash from './src/Screens/Splash';
 import Signup from './src/Screens/Signup';
 import Home from './src/Screens/Home';
+import MyAddress from './src/Screens/MyAddress';
+import AddAddress from './src/Screens/AddAddress';
 
 const AppNavigator = () => {
   const Stack = createNativeStackNavigator();
@@ -28,6 +30,16 @@ const AppNavigator = () => {
         <Stack.Screen
           name="Home"
           component={Home}
+          options={{headerShown: false}}
+        />
+        <Stack.Screen
+          name="MyAddress"
+          component={MyAddress}
+          options={{headerShown: false}}
+        />
+        <Stack.Screen
+          name="AddAddress"
+          component={AddAddress}
           options={{headerShown: false}}
         />
       </Stack.Navigator>

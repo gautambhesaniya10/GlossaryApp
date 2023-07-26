@@ -1,4 +1,4 @@
-import {View, Text, StyleSheet} from 'react-native';
+import {View, Text, StyleSheet, TouchableOpacity} from 'react-native';
 import React from 'react';
 import {useNavigation} from '@react-navigation/native';
 import AsyncStorage from '@react-native-async-storage/async-storage';
@@ -12,9 +12,11 @@ const Header = ({setSelectedTab}) => {
   };
   return (
     <View style={style.main}>
-      <Text onPress={() => setSelectedTab(0)} style={style.leftText}>
-        E-Commerce
-      </Text>
+      <TouchableOpacity>
+        <Text onPress={() => setSelectedTab(0)} style={style.leftText}>
+          E-Commerce
+        </Text>
+      </TouchableOpacity>
       <Text style={style.RightText}>Mode</Text>
       <Text
         onPress={() => LogoutHandler()}

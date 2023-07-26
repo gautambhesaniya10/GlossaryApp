@@ -1,7 +1,5 @@
-import {View, Text, Button} from 'react-native';
+import {View} from 'react-native';
 import React, {useState} from 'react';
-import AsyncStorage from '@react-native-async-storage/async-storage';
-import {useNavigation} from '@react-navigation/native';
 import BottomNavigation from '../common/BottomNavigation';
 import Main from '../bottom/Main';
 import Search from '../bottom/Search';
@@ -9,7 +7,6 @@ import Cart from '../bottom/Cart';
 import WishList from '../bottom/WishList';
 import Profile from '../bottom/Profile';
 import Header from '../common/Header';
-import {useSelector} from 'react-redux';
 
 const Home = () => {
   const [selectedTab, setSelectedTab] = useState(0);
