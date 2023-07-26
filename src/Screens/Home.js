@@ -34,7 +34,7 @@ const Home = () => {
   return (
     <>
       <View style={{flex: 1}}>
-        <Header />
+        <Header setSelectedTab={setSelectedTab} />
         <DisplayScreen />
 
         <BottomNavigation

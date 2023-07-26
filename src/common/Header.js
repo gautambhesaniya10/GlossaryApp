@@ -3,7 +3,7 @@ import React from 'react';
 import {useNavigation} from '@react-navigation/native';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 
-const Header = () => {
+const Header = ({setSelectedTab}) => {
   const navigation = useNavigation();
 
   const LogoutHandler = async () => {
@@ -12,7 +12,9 @@ const Header = () => {
   };
   return (
     <View style={style.main}>
-      <Text style={style.leftText}>E-Commerce</Text>
+      <Text onPress={() => setSelectedTab(0)} style={style.leftText}>
+        E-Commerce
+      </Text>
       <Text style={style.RightText}>Mode</Text>
       <Text
         onPress={() => LogoutHandler()}
