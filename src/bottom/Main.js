@@ -13,28 +13,8 @@ import bannerImg from '../Images/newBanner.jpg';
 import axios from 'axios';
 import ProductCard from '../common/ProductCard';
 
-const Main = () => {
-  const [category, setCategory] = useState([]);
-  const [allProduct, setAllProduct] = useState([]);
-  const [productLoading, setProductLoading] = useState(false);
+const Main = ({category, allProduct, productLoading}) => {
   const scrollViewRef = useRef(null);
-
-  const getAllProducts = async () => {
-    setProductLoading(true);
-    await axios.get('https://dummyjson.com/products').then(res => {
-      setAllProduct(res?.data?.products);
-      setProductLoading(false);
-    });
-  };
-  const getAllCategories = async () => {
-    await axios.get('https://dummyjson.com/products/categories').then(res => {
-      setCategory(res?.data);
-    });
-  };
-  useEffect(() => {
-    getAllCategories();
-    getAllProducts();
-  }, []);
 
   const handleCategoryItemClick = index => {
     if (scrollViewRef.current) {
