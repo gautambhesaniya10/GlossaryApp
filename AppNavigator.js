@@ -9,6 +9,7 @@ import AddAddress from './src/Screens/AddAddress';
 import CheckOut from './src/Screens/CheckOut';
 import SuccessOrder from './src/Screens/SuccessOrder';
 import Orders from './src/Screens/Orders';
+import OtherScreen from './src/Screens/OtherScreen';
 
 const AppNavigator = () => {
   const Stack = createNativeStackNavigator();
@@ -58,6 +59,11 @@ const AppNavigator = () => {
         <Stack.Screen
           name="Orders"
           component={Orders}
+          options={{headerShown: false}}
+        />
+        <Stack.Screen
+          name="OtherScreen"
+          component={OtherScreen}
           options={{headerShown: false}}
         />
       </Stack.Navigator>

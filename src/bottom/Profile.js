@@ -44,8 +44,10 @@ const Profile = () => {
         style={style.listMenu}>
         <Text>My Order</Text>
       </TouchableOpacity>
-      <TouchableOpacity style={style.listMenu}>
-        <Text>Offer</Text>
+      <TouchableOpacity
+        onPress={() => navigation.navigate('OtherScreen')}
+        style={style.listMenu}>
+        <Text>Other</Text>
       </TouchableOpacity>
     </View>
   );
