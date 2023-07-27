@@ -8,11 +8,12 @@ const ProfileHeader = ({title}) => {
   return (
     <View style={styles.mainHeader}>
       <Text style={styles.profileText}>{title}</Text>
-      {title === 'Profile' ? (
+      {title === 'Profile' && (
         <TouchableOpacity>
           <Image source={settingIcon} style={{width: 28, height: 28}} />
         </TouchableOpacity>
-      ) : (
+      )}
+      {title === 'My Address' && (
         <TouchableOpacity
           onPress={() => navigation.navigate('AddAddress')}
           style={styles.AddressMain}>

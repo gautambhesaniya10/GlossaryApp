@@ -39,7 +39,9 @@ const Profile = () => {
         style={style.listMenu}>
         <Text>My Address</Text>
       </TouchableOpacity>
-      <TouchableOpacity style={style.listMenu}>
+      <TouchableOpacity
+        onPress={() => navigation.navigate('Orders')}
+        style={style.listMenu}>
         <Text>My Order</Text>
       </TouchableOpacity>
       <TouchableOpacity style={style.listMenu}>

@@ -43,12 +43,12 @@ const AddAddress = () => {
   const SaveAddress = () => {
     if (validateForm()) {
       dispatch(AddToAddress(addressData));
-      navigation.navigate('MyAddress');
+      navigation.goBack();
     }
   };
   return (
     <View style={{flex: 1}}>
-      <TouchableOpacity onPress={() => navigation.navigate('MyAddress')}>
+      <TouchableOpacity onPress={() => navigation.goBack()}>
         <Image
           source={leftArrow}
           style={{width: 40, height: 40, marginTop: 25, marginLeft: 15}}

@@ -6,6 +6,9 @@ import Signup from './src/Screens/Signup';
 import Home from './src/Screens/Home';
 import MyAddress from './src/Screens/MyAddress';
 import AddAddress from './src/Screens/AddAddress';
+import CheckOut from './src/Screens/CheckOut';
+import SuccessOrder from './src/Screens/SuccessOrder';
+import Orders from './src/Screens/Orders';
 
 const AppNavigator = () => {
   const Stack = createNativeStackNavigator();
@@ -40,6 +43,21 @@ const AppNavigator = () => {
         <Stack.Screen
           name="AddAddress"
           component={AddAddress}
+          options={{headerShown: false}}
+        />
+        <Stack.Screen
+          name="CheckOut"
+          component={CheckOut}
+          options={{headerShown: false}}
+        />
+        <Stack.Screen
+          name="SuccessOrder"
+          component={SuccessOrder}
+          options={{headerShown: false}}
+        />
+        <Stack.Screen
+          name="Orders"
+          component={Orders}
           options={{headerShown: false}}
         />
       </Stack.Navigator>
