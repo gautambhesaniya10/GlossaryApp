@@ -53,9 +53,11 @@ const BottomNavigation = ({selectedTab, setSelectedTab}) => {
                 source={bagIcon}
                 style={{width: 24, height: 24, tintColor: 'white'}}
               />
-              <View style={style.ItemLength}>
-                <Text style={{color: 'white'}}>{CartData?.length}</Text>
-              </View>
+              {CartData?.length > 0 && (
+                <View style={style.ItemLength}>
+                  <Text style={{color: 'white'}}>{CartData?.length}</Text>
+                </View>
+              )}
             </TouchableOpacity>
           </TouchableOpacity>
         </View>
@@ -67,9 +69,11 @@ const BottomNavigation = ({selectedTab, setSelectedTab}) => {
             source={selectedTab === 3 ? likeIconDark : likeIconLight}
             style={{width: 24, height: 24}}
           />
-          <View style={style.LikeItemLength}>
-            <Text style={{color: 'white'}}>{WishListData?.length}</Text>
-          </View>
+          {WishListData?.length > 0 && (
+            <View style={style.LikeItemLength}>
+              <Text style={{color: 'white'}}>{WishListData?.length}</Text>
+            </View>
+          )}
         </TouchableOpacity>
 
         <TouchableOpacity

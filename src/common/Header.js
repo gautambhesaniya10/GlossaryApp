@@ -1,7 +1,9 @@
-import {View, Text, StyleSheet, TouchableOpacity} from 'react-native';
+import {View, Text, StyleSheet, TouchableOpacity, Image} from 'react-native';
 import React from 'react';
 import {useNavigation} from '@react-navigation/native';
 import AsyncStorage from '@react-native-async-storage/async-storage';
+import logoutIcon from '../Images/turn-off.png';
+import logo from '../Images/ic_launcher_round.png';
 
 const Header = ({setSelectedTab}) => {
   const navigation = useNavigation();
@@ -13,19 +15,14 @@ const Header = ({setSelectedTab}) => {
   return (
     <View style={style.main}>
       <TouchableOpacity>
-        <Text onPress={() => setSelectedTab(0)} style={style.leftText}>
-          E-Commerce
-        </Text>
+        <TouchableOpacity onPress={() => setSelectedTab(0)}>
+          <Image source={logo} style={{width: 55, height: 55}} />
+        </TouchableOpacity>
       </TouchableOpacity>
-      <Text style={style.RightText}>Mode</Text>
-      <Text
-        onPress={() => LogoutHandler()}
-        style={[
-          style.RightText,
-          {color: 'red', textDecorationLine: 'underline'},
-        ]}>
-        Logout
-      </Text>
+      <Text style={style.RightText}>Amazon</Text>
+      <TouchableOpacity onPress={() => LogoutHandler()}>
+        <Image source={logoutIcon} style={{width: 30, height: 30}} />
+      </TouchableOpacity>
     </View>
   );
 };
@@ -40,11 +37,7 @@ const style = StyleSheet.create({
     alignItems: 'center',
     paddingHorizontal: 24,
   },
-  leftText: {
-    fontSize: 18,
-    fontWeight: 'bold',
-    color: 'black',
-  },
+
   RightText: {
     fontSize: 18,
     color: 'black',
