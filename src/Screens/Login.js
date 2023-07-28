@@ -8,9 +8,11 @@ import CustomButton from '../common/CustomButton';
 import {useNavigation} from '@react-navigation/native';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import Loader from '../common/Loarder';
+import {useSelector} from 'react-redux';
 
 const Login = () => {
   const navigation = useNavigation();
+  const UserData = useSelector(state => state?.AllUsers?.Users);
 
   const [loginFormData, setLoginFormData] = useState({
     email: '',
@@ -18,8 +20,6 @@ const Login = () => {
   });
 
   const [error, setError] = useState({});
-  const [signUpUser, setSignUpUser] = useState({});
-  console.log('signUpUsersignUpUser------', signUpUser);
   const [LoaderModalVisible, setLoaderModalVisible] = useState(false);
 
   const validateForm = () => {
@@ -38,22 +38,14 @@ const Login = () => {
   };
 
   const FormSubmit = async () => {
-    const storedData = await AsyncStorage.getItem('signUpUsers');
-    const parsedData = JSON.parse(storedData);
-
-    console.log(
-      'Object.values(parsedData).length',
-      parsedData && Object.values(parsedData)?.length,
-    );
-
-    if (validateForm() || parsedData) {
+    if (validateForm()) {
       setLoaderModalVisible(true);
-      if (
-        loginFormData &&
-        parsedData &&
-        loginFormData?.email === parsedData?.email &&
-        loginFormData?.password === parsedData?.password
-      ) {
+      const FindUser = UserData?.find(
+        item =>
+          item?.email === loginFormData?.email &&
+          item?.password === loginFormData?.password,
+      );
+      if (FindUser) {
         setTimeout(() => {
           setLoaderModalVisible(false);
           setLoginFormData({
@@ -62,19 +54,17 @@ const Login = () => {
           });
           navigation.navigate('Home');
         }, 1000);
-      } else if (parsedData && Object.values(parsedData)?.length === null) {
-        setLoaderModalVisible(false);
-        Alert.alert('you can first signup !');
+        await AsyncStorage.setItem('LoginUser', JSON.stringify(FindUser));
       } else {
         setLoaderModalVisible(false);
-        Alert.alert("Your Email and Password doesn't match!");
+        Alert.alert("Your Email and Password Doesn't Match!");
       }
     }
   };
 
   return (
     <>
-      <View style={{flex: 1}}>
+      <View style={{flex: 1, backgroundColor: 'white'}}>
         <Image
           source={LogoImg}
           style={{width: 130, height: 130, alignSelf: 'center', marginTop: 70}}

@@ -16,7 +16,7 @@ const Splash = () => {
 
   const getSignUpDataFromStorage = async () => {
     try {
-      const storedData = await AsyncStorage.getItem('signUpUsers');
+      const storedData = await AsyncStorage.getItem('LoginUser');
       if (storedData) {
         const parsedData = JSON.parse(storedData);
         if (parsedData?.email !== '' && parsedData?.password !== '') {

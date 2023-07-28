@@ -10,7 +10,7 @@ const Profile = () => {
   const [user, setUser] = useState({});
 
   const getUserInfo = async () => {
-    const storedData = await AsyncStorage.getItem('signUpUsers');
+    const storedData = await AsyncStorage.getItem('LoginUser');
     const parsedData = JSON.parse(storedData);
     setUser(parsedData);
   };
@@ -33,6 +33,7 @@ const Profile = () => {
         <Text style={[style.profileText, {marginVertical: 10}]}>
           {user?.name}
         </Text>
+        <Text style={[style.profileText]}>+91{user?.phoneNumber}</Text>
       </View>
       <TouchableOpacity
         onPress={() => navigation.navigate('MyAddress')}

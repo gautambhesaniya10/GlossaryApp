@@ -8,7 +8,8 @@ import userIcon from '../Images/user.png';
 import mobileIcon from '../Images/cell-phone.png';
 import CustomButton from '../common/CustomButton';
 import {useNavigation} from '@react-navigation/native';
-import AsyncStorage from '@react-native-async-storage/async-storage';
+import {useDispatch} from 'react-redux';
+import {ADDSignUpUser} from '../Redux/action/UsersAction';
 
 const Signup = () => {
   const navigation = useNavigation();
@@ -20,8 +21,9 @@ const Signup = () => {
   });
 
   const [confirmPassword, setConfirmPassword] = useState('');
-
   const [error, setError] = useState({});
+
+  const dispatch = useDispatch();
 
   const validateForm = () => {
     let isValid = true;
@@ -60,15 +62,16 @@ const Signup = () => {
 
   const FormSubmit = async () => {
     if (validateForm()) {
-      await AsyncStorage.setItem('signUpUsers', JSON.stringify(signupFormData));
-      //   navigation.goBack();
+      dispatch(ADDSignUpUser(signupFormData));
       navigation.navigate('Login');
     } else {
     }
   };
 
   return (
-    <ScrollView style={{flex: 1}} showsVerticalScrollIndicator={false}>
+    <ScrollView
+      style={{flex: 1, backgroundColor: 'white'}}
+      showsVerticalScrollIndicator={false}>
       <View style={{flex: 1}}>
         <Image
           source={LogoImg}

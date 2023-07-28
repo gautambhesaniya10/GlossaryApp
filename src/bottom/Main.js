@@ -8,9 +8,8 @@ import {
   ScrollView,
   ActivityIndicator,
 } from 'react-native';
-import {React, useEffect, useRef, useState} from 'react';
+import {React, useRef} from 'react';
 import bannerImg from '../Images/newBanner.jpg';
-import axios from 'axios';
 import ProductCard from '../common/ProductCard';
 
 const Main = ({category, allProduct, productLoading}) => {
@@ -24,6 +23,12 @@ const Main = ({category, allProduct, productLoading}) => {
       });
     }
   };
+
+  // const stories = [
+  //   'https://st.depositphotos.com/2069237/4425/i/950/depositphotos_44255511-stock-photo-shopping-women-banner-with-bags.jpg',
+  //   'https://t4.ftcdn.net/jpg/03/06/69/49/360_F_306694930_S3Z8H9Qk1MN79ZUe7bEWqTFuonRZdemw.jpg',
+  //   'https://d1csarkz8obe9u.cloudfront.net/posterpreviews/clothing-store-banner-design-template-e7332aaf6402c88cb4623bf8eb6f97e2_screen.jpg?ts=1620867237',
+  // ];
 
   return (
     <View style={{flex: 1}}>
@@ -47,8 +52,13 @@ const Main = ({category, allProduct, productLoading}) => {
                       <>
                         <TouchableOpacity
                           onPress={() => handleCategoryItemClick(index)}
-                          style={styles.categoryItem}>
-                          <Text style={{color: '#000'}}>{item}</Text>
+                          style={[
+                            styles.categoryItem,
+                            {backgroundColor: 'pink'},
+                          ]}>
+                          <Text style={{color: 'black', fontWeight: '500'}}>
+                            {item.toUpperCase()}
+                          </Text>
                         </TouchableOpacity>
                       </>
                     );

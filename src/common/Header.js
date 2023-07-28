@@ -9,7 +9,7 @@ const Header = ({setSelectedTab}) => {
   const navigation = useNavigation();
 
   const LogoutHandler = async () => {
-    await AsyncStorage.removeItem('signUpUsers');
+    await AsyncStorage.removeItem('LoginUser');
     navigation.navigate('Login');
   };
   return (

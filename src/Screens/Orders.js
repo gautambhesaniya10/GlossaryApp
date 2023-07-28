@@ -6,7 +6,7 @@ import {useSelector} from 'react-redux';
 const Orders = () => {
   const MyOrders = useSelector(state => state?.AllOrders?.Orders);
   return (
-    <View style={{flex: 1}}>
+    <View style={{flex: 1, backgroundColor: 'white'}}>
       <ProfileHeader title="Orders" />
       <ScrollView>
         <View>
