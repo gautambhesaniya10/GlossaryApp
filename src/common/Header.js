@@ -12,10 +12,17 @@ const Header = ({setSelectedTab}) => {
     await AsyncStorage.removeItem('LoginUser');
     navigation.navigate('Login');
   };
+
+  const OnClickHandler = async () => {
+    if (setSelectedTab) {
+      setSelectedTab(0);
+    }
+  };
+
   return (
     <View style={style.main}>
       <TouchableOpacity>
-        <TouchableOpacity onPress={() => setSelectedTab(0)}>
+        <TouchableOpacity onPress={() => OnClickHandler()}>
           <Image source={logo} style={{width: 55, height: 55}} />
         </TouchableOpacity>
       </TouchableOpacity>

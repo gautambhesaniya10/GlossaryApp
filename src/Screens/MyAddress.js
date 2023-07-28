@@ -15,31 +15,37 @@ const MyAddress = () => {
   return (
     <View style={{flex: 1}}>
       <ProfileHeader title="My Address" />
-      <ScrollView>
-        <View style={styles.main}>
-          {AllAddress &&
-            AllAddress?.map((item, index) => {
-              return (
-                <View key={index} style={styles.boxDiv}>
-                  <View>
-                    <Text style={styles.textField}>City : {item?.city}</Text>
-                    <Text style={styles.textField}>
-                      Building Name : {item?.buildingName}
-                    </Text>
-                    <Text style={styles.textField}>
-                      Pincode : {item?.pinCode}
-                    </Text>
+      {AllAddress?.length > 0 ? (
+        <ScrollView>
+          <View style={styles.main}>
+            {AllAddress &&
+              AllAddress?.map((item, index) => {
+                return (
+                  <View key={index} style={styles.boxDiv}>
+                    <View>
+                      <Text style={styles.textField}>City : {item?.city}</Text>
+                      <Text style={styles.textField}>
+                        Building Name : {item?.buildingName}
+                      </Text>
+                      <Text style={styles.textField}>
+                        Pincode : {item?.pinCode}
+                      </Text>
+                    </View>
+                    <Button
+                      onPress={() => DeleteAddressHandler(index)}
+                      title="Delete"
+                      color="red"
+                    />
                   </View>
-                  <Button
-                    onPress={() => DeleteAddressHandler(index)}
-                    title="Delete"
-                    color="red"
-                  />
-                </View>
-              );
-            })}
+                );
+              })}
+          </View>
+        </ScrollView>
+      ) : (
+        <View style={{flex: 1, alignItems: 'center', justifyContent: 'center'}}>
+          <Text style={{color: 'black', fontSize: 16}}>No Added Address</Text>
         </View>
-      </ScrollView>
+      )}
     </View>
   );
 };
