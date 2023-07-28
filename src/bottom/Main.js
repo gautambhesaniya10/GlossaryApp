@@ -7,13 +7,15 @@ import {
   TouchableOpacity,
   ScrollView,
   ActivityIndicator,
+  RefreshControl,
 } from 'react-native';
-import {React, useRef} from 'react';
+import {React, useRef, useState} from 'react';
 import bannerImg from '../Images/newBanner.jpg';
 import ProductCard from '../common/ProductCard';
 
 const Main = ({category, allProduct, productLoading}) => {
   const scrollViewRef = useRef(null);
+  const [isRefreshing, setIsRefreshing] = useState(false);
 
   const handleCategoryItemClick = index => {
     if (scrollViewRef.current) {
@@ -24,15 +26,20 @@ const Main = ({category, allProduct, productLoading}) => {
     }
   };
 
-  // const stories = [
-  //   'https://st.depositphotos.com/2069237/4425/i/950/depositphotos_44255511-stock-photo-shopping-women-banner-with-bags.jpg',
-  //   'https://t4.ftcdn.net/jpg/03/06/69/49/360_F_306694930_S3Z8H9Qk1MN79ZUe7bEWqTFuonRZdemw.jpg',
-  //   'https://d1csarkz8obe9u.cloudfront.net/posterpreviews/clothing-store-banner-design-template-e7332aaf6402c88cb4623bf8eb6f97e2_screen.jpg?ts=1620867237',
-  // ];
+  const handleRefresh = () => {
+    setTimeout(() => {
+      setIsRefreshing(false);
+    }, 2000);
+  };
 
   return (
     <View style={{flex: 1}}>
-      <ScrollView ref={scrollViewRef} style={{marginBottom: 100}}>
+      <ScrollView
+        refreshControl={
+          <RefreshControl refreshing={isRefreshing} onRefresh={handleRefresh} />
+        }
+        ref={scrollViewRef}
+        style={{marginBottom: 100}}>
         <Image source={bannerImg} style={styles.banner} />
 
         {productLoading ? (
